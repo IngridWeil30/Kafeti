@@ -1,0 +1,39 @@
+/********************************************
+*
+* DEFINITION DES FONTS
+*
+********************************************/
+@font-face {
+	font-family: 'Calligraffiti';
+	src: url('../font/Calligraffiti.ttf');
+}
+
+/********************************************
+*
+* GLOBAL
+*
+********************************************/
+body {
+	font-family: 'Calligraffiti';
+}
+
+h1 {
+	margin: 0px -10px 10px -10px;
+	background-color: #e2ada0;
+	padding: 15px 5px 15px 15px;
+	color: #FFFFFF;
+	font-family: Calligraffiti;
+	font-size: 35px;
+}
+
+b, strong {
+	font-family: 'Calligraffiti';
+}
+
+a {
+	color: #e2ada0;
+}
+
+a:hover {
+	color: #e2ada0;
+}
