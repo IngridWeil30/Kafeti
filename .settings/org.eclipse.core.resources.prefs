@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//src/DataFixtures=UTF-8
+encoding//src/DataFixtures/LoadCategoriePlatData.php=UTF-8
+encoding//src/DataFixtures/LoadPlatData.php=UTF-8
+encoding//src/DataFixtures/LoadPrixIngredientData.php=UTF-8
+encoding//src/Entity/PrixIngredient.php=UTF-8

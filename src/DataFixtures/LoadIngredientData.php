@@ -17,6 +17,41 @@ class LoadIngredientData extends Fixture implements DependentFixtureInterface
             'setSeuilAlerte' => 10,
             'setActif' => 1,
             'setTypeIngredient' => 'TypeIngredient-1'
+            ],
+            'Ingredient-2' => [
+                'setDenomination' => 'Boeuf',
+                'setQuantite' => 12,
+                'setSeuilAlerte' => 10,
+                'setActif' => 1,
+                'setTypeIngredient' => 'TypeIngredient-2'
+            ],
+            'Ingredient-3' => [
+                'setDenomination' => 'Cabillaud',
+                'setQuantite' => 13,
+                'setSeuilAlerte' => 10,
+                'setActif' => 1,
+                'setTypeIngredient' => 'TypeIngredient-3'
+            ],
+            'Ingredient-4' => [
+                'setDenomination' => 'Pomme de terre',
+                'setQuantite' => 15.5,
+                'setSeuilAlerte' => 10,
+                'setActif' => 1,
+                'setTypeIngredient' => 'TypeIngredient-4'
+            ],
+            'Ingredient-5' => [
+                'setDenomination' => 'Kiwi',
+                'setQuantite' => 30,
+                'setSeuilAlerte' => 10,
+                'setActif' => 1,
+                'setTypeIngredient' => 'TypeIngredient-5'
+            ],
+            'Ingredient-6' => [
+                'setDenomination' => 'Oignon',
+                'setQuantite' => 9.5,
+                'setSeuilAlerte' => 10,
+                'setActif' => 1,
+                'setTypeIngredient' => 'TypeIngredient-6'
             ]
         ]
     ];
