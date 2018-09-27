@@ -47,9 +47,9 @@ class LoadIngredientData extends Fixture implements DependentFixtureInterface
                 'setTypeIngredient' => 'TypeIngredient-5'
             ],
             'Ingredient-6' => [
-                'setDenomination' => 'Oignon',
-                'setQuantite' => 9.5,
-                'setSeuilAlerte' => 10,
+                'setDenomination' => 'Confiture de mandarine',
+                'setQuantite' => 5,
+                'setSeuilAlerte' => 5,
                 'setActif' => 1,
                 'setTypeIngredient' => 'TypeIngredient-6'
             ]

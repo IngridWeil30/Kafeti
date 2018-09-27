@@ -74,8 +74,7 @@ class LoadPrixPlatData extends Fixture implements DependentFixtureInterface
     public function getDependencies()
     {
         return array(
-            LoadPlatData::class,
-           // LoadCategoriePlatData::class
+            LoadPlatData::class
         );
     }
 }

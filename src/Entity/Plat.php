@@ -64,6 +64,11 @@ class Plat
      */
     private $menus;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $type;
+
     public function __construct()
     {
         $this->prixPlats = new ArrayCollection();
@@ -251,6 +256,18 @@ class Plat
             $this->menus->removeElement($menu);
             $menu->removePlat($this);
         }
+
+        return $this;
+    }
+
+    public function getType(): ?int
+    {
+        return $this->type;
+    }
+
+    public function setType(int $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }

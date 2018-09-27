@@ -74,8 +74,7 @@ class LoadPrixIngredientData extends Fixture implements DependentFixtureInterfac
     public function getDependencies()
     {
         return array(
-            LoadIngredientData::class,
-            LoadTypeIngredientData::class
+            LoadIngredientData::class
         );
     }
 }
