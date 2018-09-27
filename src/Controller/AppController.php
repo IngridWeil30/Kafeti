@@ -9,4 +9,9 @@ class AppController extends Controller
         2 => 'Plat',
         3 => 'Dessert'
     );
+    
+    const DROITS = array(
+        'ROLE_GERANT' => 'Gérant',
+        'ROLE_SERVEUR' => 'Serveur',
+    );
 }

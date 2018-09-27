@@ -5,11 +5,12 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UtilisateurRepository")
  */
-class Utilisateur
+class Utilisateur implements AdvancedUserInterface
 {
     /**
      * @ORM\Id()
@@ -215,5 +216,30 @@ class Utilisateur
         }
 
         return $this;
+    }
+    
+    public function isAccountNonExpired()
+    {
+        return true;
+    }
+    public function isCredentialsNonExpired()
+    {
+        return true;
+    }
+    public function eraseCredentials()
+    {
+        return true;
+    }
+    public function isEnabled()
+    {
+        if($this->getActif() == 0)
+        {
+            return false;
+        }
+        return true;
+    }
+    public function isAccountNonLocked()
+    {
+        return true;
     }
 }

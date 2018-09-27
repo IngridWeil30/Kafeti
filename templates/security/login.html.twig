@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block body %}
+
+<div class="card mx-auto mt-5 shadow" style="width: 42rem;">
+  		<div class="card-body">
+    		<h5 class="card-title">Se connecter</h5>
+    		{% if error %}
+    			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+  			<form action="{{ path('security_login') }}" method="post" id="login-form">
+  				<div class="form-group">
+                    <label for="username">Identifiant</label>
+                    <input type="text" class="form-control" id="username" value="{{ last_username }}" placeholder="Votre identifiant" name="_username">
+                  </div>
+    			<div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" class="form-control" id="password" placeholder="Mot de passe" name="_password">
+                </div>
+                
+                {% if  app.environment == 'dev' %}
+                <div class="alert alert-light">
+                		<b>Se connecter en tant que</b>
+                		<a href="#" class="link-debug-auto-login" data-pseudo="gerant" data-password="gerant">Gérant</a> |
+                		<a href="#" class="link-debug-auto-login" data-pseudo="serveur" data-password="serveur">Serveur</a>
+                </div>
+                {% endif %}
+                
+               	<div class="text-center">
+    				<button class="btn btn-primary" id="btn-submit-login" type="submit">Me connecter</button>
+    			</div>
+    		</form>
+		</div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        {% if  app.environment == 'dev' %}
+        $('.link-debug-auto-login').click(function() {
+            $('#username').val($(this).data('pseudo'));
+            $('#password').val($(this).data('password'));
+            $('#btn-submit-login').addClass('disabled').html('Connexion...');
+            $('#login-form').submit();
+        });
+        $('#btn-submit-login').click(function() {
+            $(this).addClass('disabled').html('Connexion...');
+        });
+         {% endif %}
+    
+    </script>
+{% endblock %}
