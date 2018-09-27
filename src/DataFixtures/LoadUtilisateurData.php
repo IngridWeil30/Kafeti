@@ -4,10 +4,12 @@ namespace App\DataFixtures;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use App\Entity\Utilisateur;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class LoadUtilisateurData extends Fixture
 {
-
+    private $encoder;
+    
     private $tabUtilisateur = [
         'Utilisateur' => [            
             'Utilisateur-1' => [
@@ -33,6 +35,10 @@ class LoadUtilisateurData extends Fixture
         ]
     ];
 
+    public function __construct(UserPasswordEncoderInterface $encoder) {
+      $this->encoder = $encoder;    
+    }
+    
     public function load(ObjectManager $manager)
     {
         $utilisateursArray = $this->tabUtilisateur['Utilisateur'];
@@ -41,10 +47,11 @@ class LoadUtilisateurData extends Fixture
             $utilisateur = new Utilisateur();
 
             foreach ($object as $key => $val) {
-                if ($key == 'setCategoriePlat') {
-                    $categorie_plat = $this->getReference($val);
-                    $plat->{$key}($categorie_plat);
-                } else {
+                if($key == 'setPassword') {
+                    $password = $this->encoder($utilisateur, $val);
+                    $utilisateur->{$key}($password);
+                }
+                else {
                     $utilisateur->{$key}($val);
                 }
             }
@@ -53,5 +60,9 @@ class LoadUtilisateurData extends Fixture
             $this->addReference($name, $utilisateur);
         }
         $manager->flush();
+    }
+    
+    private function encoder(Utilisateur $utilisateur, $val) {
+        return $this->encoder->encodePassword($utilisateur, $val);
     }
 }
