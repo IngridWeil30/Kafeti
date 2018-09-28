@@ -36,14 +36,14 @@ class LoadPlatData extends Fixture implements DependentFixtureInterface
                 'setDenomination' => 'Purée maison à l\'ancienne',
                 'setDescription' => 'Purée maison au beurre et au jus de citron.',
                 'setActif' => 1,
-                'setCategoriePlat' => 'CategoriePlat-4',
+                'setCategoriePlat' => 'CategoriePlat-1',
                 'setType' => 1
             ],
             'Plat-5' => [
                 'setDenomination' => 'Délice aux deux kiwis',
                 'setDescription' => 'Kiwis traditionnels et néo-zélandais accompagnés d\'une mousse de mangue.',
                 'setActif' => 1,
-                'setCategoriePlat' => 'CategoriePlat-5',
+                'setCategoriePlat' => 'CategoriePlat-1',
                 'setType' => 3
             ],
             'Plat-6' => [

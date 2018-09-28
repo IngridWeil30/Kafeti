@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ingredient - Index{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div>
+    <h1>Kafeti - Ingredient (index)</h1>
+    
+          	<table class="table table-sm table-striped">
+        	<tr>
+        		<th>#</th>
+        		<th>Dénomination</th>
+        		<th>Type d'ingrédient</th>
+        		<th>Quantité</th>
+        		<th>Seuil d'alerte</th>
+        	</tr>
+        	
+                {% for ingredient in ingredients %}
+            <tr>
+        		<td>{{ ingredient.id }}</td>
+        		<td>{{ ingredient.denomination }}</td>
+        		<td>{{ ingredient.typeIngredient.denomination }}</td>
+        		<td>{{ ingredient.quantite }}</td>
+        		<td>{{ ingredient.seuilAlerte }}</td>
+                {% endfor %}
+            </tr>
+</div>
+{% endblock %}
