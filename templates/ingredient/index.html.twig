@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ingredient - Index{% endblock %}
+{% block title %}Ingrédients{% endblock %}
 
 {% block body %}
 <style>
@@ -9,22 +9,30 @@
 </style>
 
 <div>
-    <h1>Kafeti - Ingredient (index)</h1>
+    <h1><a href="{{ path('index') }}"><img src="{{ asset('img/logo-kafeti.png') }}" alt="Logo Kafeti"></a>Ingrédients</h1>
     
           	<table class="table table-sm table-striped">
         	<tr>
+        	    <th></th>
         		<th>#</th>
         		<th>Dénomination</th>
         		<th>Type d'ingrédient</th>
+        		<th>Prix ingrédient</th>
         		<th>Quantité</th>
         		<th>Seuil d'alerte</th>
         	</tr>
         	
                 {% for ingredient in ingredients %}
             <tr>
+        		<td>{{ ingredient.actif | actif(true) |raw }}</td>
         		<td>{{ ingredient.id }}</td>
         		<td>{{ ingredient.denomination }}</td>
         		<td>{{ ingredient.typeIngredient.denomination }}</td>
+        		<td>
+            		{% for ing in ingredient.prixIngredients %}
+            		    {{ ing.prix }} €
+            		{% endfor %}
+            	</td>
         		<td>{{ ingredient.quantite }}</td>
         		<td>{{ ingredient.seuilAlerte }}</td>
                 {% endfor %}
