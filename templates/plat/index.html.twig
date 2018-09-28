@@ -5,10 +5,16 @@
 {% block body %}
 
 <div>
-    <h1><a href="{{ path('index') }}"><img src="{{ asset('img/logo-kafeti.png') }}" alt="Logo Kafeti"></a>Plats</h1>
-    
+    <h1>Plats</h1>
+        <div class="card">
+    	<div class="card-header">
+    	    <a href="{{ path('plat_add') }}"><span class="oi oi-plus"></span> Créer un nouveau plat</a>
+      	</div>
+      	
+      	<div class="card-body">
           	<table class="table table-sm table-striped">
         	<tr>
+        	
         		<th>#</th>
         		<th>Dénomination</th>
         		<th>Description</th>
@@ -25,5 +31,7 @@
         		<td>{{ plat.categoriePlat.denomination }}</td>
                 {% endfor %}
             </tr>
+            </table>
+            </div>
 </div>
 {% endblock %}
