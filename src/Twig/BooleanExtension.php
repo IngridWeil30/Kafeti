@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Traitement des éléments de type booléens dans Twig
  */

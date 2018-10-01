@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Fiche du plat {% endblock %}
+
+{% block body %}
+
+<h1>Visualisation du plat "{{ plat.denomination }}"</h1>
+
+<div>
+{{ plat.id }}
+{{ plat.categoriePlat.denomination }}
+{{ plat.description }}
+{{ plat.type |type |raw }}
+</div>
+	  
+{% endblock %}

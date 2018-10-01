@@ -20,15 +20,23 @@
         		<th>Description</th>
         		<th>Type de plat</th>
         		<th>Catégorie de plat</th>
+        		<th>Actions</th>
         	</tr>
         	
                 {% for plat in plats %}
             <tr>
-        		<td>{{ plat.actif |actif(true) |raw}}{{ plat.id }}</td>
+        		<td>{{ plat.actif | actif(true) | raw }}{{ plat.id }}</td>
         		<td>{{ plat.denomination }}</td>
         		<td>{{ plat.description }}</td>
         		<td>{{ plat.type | type }}</td>
         		<td>{{ plat.categoriePlat.denomination }}</td>
+    		    <td>
+    			    {{ actionSee(path('plat_see', {'id' : plat.id })) | raw }}
+    			    {#
+    			    {{ actionEdit(path('plat_edit', {'id' : plat.id })) | raw }}
+    			    {{ actionDelete(plat.actif, path('plat_delete', {'id' : plat.id })) | raw }}
+    			    #}
+    			</td>
                 {% endfor %}
             </tr>
             </table>

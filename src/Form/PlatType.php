@@ -12,7 +12,11 @@ use App\Repository\CategoriePlatRepository;
 
 class PlatType extends AbstractType
 {
-
+    /**
+     * Formulaire concernant l'objet Plat
+     * {@inheritDoc}
+     * @see \Symfony\Component\Form\AbstractType::buildForm()
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('denomination')

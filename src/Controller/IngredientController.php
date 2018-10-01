@@ -9,6 +9,7 @@ use App\Entity\PrixIngredient;
 class IngredientController extends AppController
 {
     /**
+     * Index des ingrédients
      * @Route("/ingredient/listing", name="ingredient_listing")
      */
     public function index()

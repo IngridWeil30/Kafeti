@@ -3,17 +3,23 @@
 namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use App\Entity\Plat;
 use App\Form\PlatType;
 use Symfony\Component\HttpFoundation\Request;
 
 class PlatController extends AppController
 {
+    /**
+     * Précision de constantes permettant de définir le type du plat
+     * @var array
+     */
     const TYPE = array(
         1 => 'Entrée',
         2 => 'Plat',
         3 => 'Dessert'
     );
+    
     /**
      * Index des plats
      * @Route("/plat/listing", name="plat_listing")
@@ -49,6 +55,18 @@ class PlatController extends AppController
         return $this->render('plat/add.html.twig', array(
             'plat' => $plat,
             'form' => $form->createView()
+        ));
+    }
+    
+    /**
+     * Fiche d'un plat
+     * @Route("/plat/see/{id}", name="plat_see")
+     * @ParamConverter("plat", options={"mapping": {"id": "id"}})
+     */
+    public function seeAction(Plat $plat) {
+        
+        return $this->render('plat/see.html.twig', array(
+            'plat' => $plat
         ));
     }
 }

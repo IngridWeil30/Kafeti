@@ -10,7 +10,7 @@ class SecurityController extends AppController
 {
 
     /**
-     * La route pour se connecter.
+     * La route pour se connecter
      *
      * @Route("/login", name="security_login")
      */
@@ -31,7 +31,7 @@ class SecurityController extends AppController
     }
 
     /**
-     * La route pour se deconnecter.
+     * La route pour se deconnecter
      *
      * @Route("/logout", name="security_logout")
      */
