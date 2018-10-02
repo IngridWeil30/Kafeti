@@ -16,7 +16,8 @@ class LoadPlatData extends Fixture implements DependentFixtureInterface
             'setDescription' => 'Un plat typiquement français et d\'une grande authenticité.',
             'setActif' => 1,
             'setCategoriePlat' => 'CategoriePlat-1',
-            'setType' => 2
+            'setType' => 2,
+            'setImage' => 'https://cdn-rdb.arla.com/Files/arla-se/746782244/3335ceed-81c7-4c2e-b510-7d97914933c6.jpg?mode=crop&w=1680&h=750&scale=both&ak=f525e733&hm=e6b63260'
             ],
             'Plat-2' => [
                 'setDenomination' => 'Spaghettis bolognaise',

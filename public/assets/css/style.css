@@ -18,7 +18,7 @@ body {
 }
 
 h1 {
-	margin: 0px -10px 10px -10px;
+	margin: 0px 0px 10px 0px;
 	background-color: #e2ada0;
 	padding: 15px 5px 15px 15px;
 	color: #FFFFFF;
@@ -36,4 +36,27 @@ a {
 
 a:hover {
 	color: #e2ada0;
+}
+
+/********************************************
+*
+* Vues de Plat
+*
+********************************************/
+#ardoise-plat {
+	background: url("../../img/ardoise-2.jpg") repeat center top; 
+	min-height: 600px;
+}
+
+.img-plat {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+	width: 20%;
+	border-radius: 20px;
+}
+
+#text-plat {
+    text-align: center;
+    color: white;
 }
