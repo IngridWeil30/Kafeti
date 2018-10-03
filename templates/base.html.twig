@@ -8,7 +8,8 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-    
+    {% include 'elements/nav.html.twig' %}
+    {% include 'elements/arborescence.html.twig' %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

@@ -1,18 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Nouveau plat {% endblock %}
+{% block title %} Nouvel ingrédient {% endblock %}
 
 {% block body %}
 
-<h1>Ajout d'un nouveau plat</h1>
+<h1>Ajout d'un nouvel ingrédient</h1>
 
 <div class="col-6">
     {{ form_start(form) }}
     
 	{{ form_row(form.denomination) }}
-	{{ form_row(form.description) }}
+	{{ form_row(form.quantite) }}
 	{{ form_row(form.image) }}
-	{{ form_row(form.type) }}
 	  
     {{ form_rest(form) }}
     {{ form_errors(form) }}

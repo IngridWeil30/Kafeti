@@ -7,7 +7,6 @@
 <div id="ardoise-plat">
 
 	<h1>Visualisation du plat {% if is_granted ('ROLE_GERANT') %} #{{ plat.id }} {% endif %} "{{ plat.denomination }}"</h1>
-
 	<div id="block-plat" class="mt-6">
     	<img class="img-plat justify-content-center" src="{{ plat.image }}" alt='photo {{ plat.denomination }}'><br/>
         <div id="text-plat">
@@ -17,5 +16,5 @@
     	</div>
     </div>
 </div>
-	  
+
 {% endblock %}

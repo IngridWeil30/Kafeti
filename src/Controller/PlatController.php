@@ -22,9 +22,9 @@ class PlatController extends AppController
     
     /**
      * Index des plats
-     * @Route("/plat/listing", name="plat_listing")
+     * @Route("/plat/listing/{page}", name="plat_listing")
      */
-    public function index()
+    public function index(int $page = 1)
     {
         $plats = $this->getDoctrine()
         ->getRepository(Plat::class)
@@ -32,6 +32,10 @@ class PlatController extends AppController
         
         return $this->render('plat/index.html.twig', [
             'plats' => $plats,
+            'paths' => array(
+                'home' => $this->indexUrlProject(),
+                'active' => "Liste des plats"
+            )
         ]);
     }
     
@@ -54,7 +58,11 @@ class PlatController extends AppController
         }
         return $this->render('plat/add.html.twig', array(
             'plat' => $plat,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'paths' => array(
+                'home' => $this->indexUrlProject(),
+                'active' => "Ajout d'un plat"
+            )
         ));
     }
     
@@ -66,7 +74,11 @@ class PlatController extends AppController
     public function seeAction(Plat $plat) {
         
         return $this->render('plat/see.html.twig', array(
-            'plat' => $plat
+            'plat' => $plat,
+            'paths' => array(
+                'home' => $this->indexUrlProject(),
+                'active' => "Fiche d'un plat"
+            )
         ));
     }
 }

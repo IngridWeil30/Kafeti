@@ -11,4 +11,15 @@ class AppController extends Controller
         'ROLE_GERANT' => 'Gérant',
         'ROLE_SERVEUR' => 'Serveur',
     );
+    
+    /**
+     * Url de la home du projet
+     *
+     * @return string
+     */
+    public function indexUrlProject()
+    {
+        return $this->generateUrl('index');
+    }
+
 }

@@ -6,6 +6,7 @@
 
 <div>
     <h1>Plats</h1>
+
         <div class="card">
     	<div class="card-header">
     	    <a href="{{ path('plat_add') }}"><span class="oi oi-plus"></span> Créer un nouveau plat</a>
@@ -41,5 +42,12 @@
             </tr>
             </table>
             </div>
+            
+            
+        <div class="card-footer">
+      		{% include 'elements/pagination.html.twig' %}
+      	</div>
+      	
+      	
 </div>
 {% endblock %}

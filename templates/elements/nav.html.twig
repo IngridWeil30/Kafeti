@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-xl navbar-dark bg-info" id="bar-nav">
+	<a class="navbar-brand" href="{{ path('index') }}"><img id="logo-kafeti" src="{{ asset('img/logo-kafeti2.png') }}" alt="Logo Kafeti" height='60'></a>
+  	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    	<ul class="navbar-nav mr-auto">
+    		{% if is_granted("ROLE_GERANT") %}
+          		    <a class="nav-link" href="{{ path('plat_listing') }}"><span class="oi oi-heart"></span> Espace plats</a>
+            		<a class="nav-link" href="{{ path('ingredient_listing') }}"><span class="oi oi-heart"></span> Espace ingrédients</a>
+      		{% endif %}
+      		
+      	</ul>
+           	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+      	<ul class="navbar-nav justify-content-end">
+      		<li class="nav-item dropdown">
+        		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          			Bonjour {{ app.user.username |capitalize }} <span class="nb-message-no-read"></span>
+           	{% if app.environment == 'dev' %}
+          				{% for role in app.user.roles %}
+     						[{{ role |lower }}]
+     				    {% endfor %}
+          			{% endif %}
+        		</a>
+        		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          			<a class="dropdown-item" href=""><span class="oi oi-person"></span> Mon compte</a>
+          			<div class="dropdown-divider"></div>
+          				<a class="dropdown-item" href='{{ path('security_logout') }}'><span class="oi oi-account-logout"></span> Déconnexion</a>
+        			</div>
+      		</li>
+    	</ul>
+    	 {% endif %}
+        		</a>
+      		</li>
+    	</ul>
+    	<span class="navbar-text">
+    		{% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+     			 <a href='{{ path('security_login') }}'><span class="oi oi-account-login"></span> Connexion</a>
+            {% endif %}
+      	</span>
+  	</div>
+</nav>
+
+{% block javascripts %}{% endblock %}

@@ -13,13 +13,18 @@
 * GLOBAL
 *
 ********************************************/
+
+#logo-kafeti {
+	border-radius: 90px;
+}
+
 body {
 	font-family: 'Calligraffiti';
 }
 
 h1 {
 	margin: 0px 0px 10px 0px;
-	background-color: #e2ada0;
+	background-color: #d38470;
 	padding: 15px 5px 15px 15px;
 	color: #FFFFFF;
 	font-family: Calligraffiti;
@@ -31,11 +36,13 @@ b, strong {
 }
 
 a {
-	color: #e2ada0;
+	color: #d38470;
+	font-weight: bold;
 }
 
 a:hover {
-	color: #e2ada0;
+	color: #7d3726;
+	text-decoration: none;
 }
 
 /********************************************

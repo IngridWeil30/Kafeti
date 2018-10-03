@@ -11,6 +11,12 @@
 <div>
     <h1>Ingrédients</h1>
     
+     <div class="card">
+    	<div class="card-header">
+    	    <a href="{{ path('ingredient_add') }}"><span class="oi oi-plus"></span> Créer un nouvel ingrédient</a>
+      	</div>
+      	
+      	<div class="card-body">
           	<table class="table table-sm table-striped">
         	<tr>
         	    <th></th>
@@ -37,5 +43,8 @@
         		<td>{{ ingredient.seuilAlerte }}</td>
                 {% endfor %}
             </tr>
+      </table>
 </div>
 {% endblock %}
+
+
