@@ -51,7 +51,7 @@ class IngredientController extends AppController
             $em->flush();
             return $this->redirect($this->generateUrl('ingredient_listing'));
         }
-        return $this->render('plat/add.html.twig', array(
+        return $this->render('ingredient/add.html.twig', array(
             'ingredient' => $ingredient,
             'form' => $form->createView(),
             'paths' => array(
