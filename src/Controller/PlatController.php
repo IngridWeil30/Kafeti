@@ -4,9 +4,11 @@ namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use App\Entity\Plat;
 use App\Form\PlatType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class PlatController extends AppController
 {
@@ -21,17 +23,50 @@ class PlatController extends AppController
     );
     
     /**
-     * Index des plats
-     * @Route("/plat/listing/{page}", name="plat_listing")
+     * Listing des plats
+     * 
+     * @Route("/plat/listing/{page}/{field}/{order}", name="plat_listing", defaults={"page" = 1, "field"= null, "order"= null}))
+     * @Security("is_granted('ROLE_GERANT') or is_granted('ROLE_SERVEUR')")
      */
-    public function index(int $page = 1)
+    public function index(Request $request, SessionInterface $session, int $page = 1, $field = null, $order = null)
     {
-        $plats = $this->getDoctrine()
-        ->getRepository(Plat::class)
-        ->findAll();
+        if (is_null($field)) {
+            $field = 'id';
+        }
+        
+        if (is_null($order)) {
+            $order = 'DESC';
+        }
+        
+        $params = array(
+            'field' => $field,
+            'order' => $order,
+            'page' => $page,
+            'repositoryClass' => Plat::class,
+            'repository' => 'Plat',
+            'repositoryMethode' => 'findAllPlats'
+        );       
+        
+        $result = $this->genericSearch($request, $session, $params);
+        
+        $pagination = array(
+            'page' => $page,
+            'route' => 'plat_listing',
+            'pages_count' => ceil($result['nb'] / self::MAX_NB_RESULT),
+            'nb_elements' => $result['nb'],
+            'route_params' => array()
+        );
+        
+//         $plats = $this->getDoctrine()
+//         ->getRepository(Plat::class)
+//         ->findAll();
         
         return $this->render('plat/index.html.twig', [
-            'plats' => $plats,
+            'plats' => $result['paginator'],
+            'pagination' => $pagination,
+            'current_order' => $order,
+            'current_field' => $field,
+            'current_search' => $session->get(self::CURRENT_SEARCH),
             'paths' => array(
                 'home' => $this->indexUrlProject(),
                 'active' => "Liste des plats"

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Plat - Index{% endblock %}
+{% block title %} Plats {% endblock %}
 
 {% block body %}
 
@@ -9,21 +9,29 @@
 
         <div class="card">
     	<div class="card-header">
-    	    <a href="{{ path('plat_add') }}"><span class="oi oi-plus"></span> Créer un nouveau plat</a>
+    	{{ pagination.nb_elements }} plat{% if pagination.nb_elements > 1 %}s{% endif %} {% if pagination.pages_count > 0 %} - Page {{ pagination.page }} / {{ pagination.pages_count }} {% endif %}
+    	    <a href="{{ path('plat_add') }}" class="float-right"><span class="oi oi-plus"></span> Créer un nouveau plat</a>
+    	{{ labelFilter(path('utils_delete-search', {'page' : pagination.page} ), current_search) | raw }}
       	</div>
       	
       	<div class="card-body">
           	<table class="table table-sm table-striped">
         	<tr>
-        	
-        		<th>#</th>
-        		<th>Dénomination</th>
+        		<th> {{ headerFilter(path('plat_listing', {'page' : pagination.page, 'field' : 'id'} ), '#', current_order, current_field) | raw }} </th>
+        		<th> {{ headerFilter(path('plat_listing', {'page' : pagination.page, 'field' : 'denomination'} ), 'Dénomination', current_order, current_field) | raw }} </th>
         		<th>Description</th>
-        		<th>Type de plat</th>
+        		<th> {{ headerFilter(path('plat_listing', {'page' : pagination.page, 'field' : 'type'} ), 'Type de plat', current_order, current_field) | raw }} </th>
         		<th>Catégorie de plat</th>
         		<th>Actions</th>
         	</tr>
         	
+        	<tr>
+            		<td>{{ inputFilter(path('plat_listing', {'page' : pagination.page, 'field' : current_field, 'order' : current_order}), 'Plat-id', current_search, 'Identifiant') | raw }}</td>
+            		<td>{{ inputFilter(path('plat_listing', {'page' : pagination.page, 'field' : current_field, 'order' : current_order}), 'Plat-denomination', current_search, 'Dénomination') | raw }}</td>
+            		<td></td>
+            		<td>{{ inputFilter(path('plat_listing', {'page' : pagination.page, 'field' : current_field, 'order' : current_order}), 'Plat-type', current_search, 'Type') | raw }}</td>
+            </tr>
+            
                 {% for plat in plats %}
             <tr>
         		<td>{{ plat.actif | actif(true) | raw }}{{ plat.id }}</td>
@@ -41,7 +49,11 @@
                 {% endfor %}
             </tr>
             </table>
-            </div>
+ 
+           {% if plats is empty %}
+        		<p class="text-info text-center">Il  n'y a aucun plat correspondant à votre recherche.</p>
+            {% endif %}
+        </div>
             
             
         <div class="card-footer">
