@@ -20,8 +20,8 @@
         		<th> {{ headerFilter(path('plat_listing', {'page' : pagination.page, 'field' : 'id'} ), '#', current_order, current_field) | raw }} </th>
         		<th> {{ headerFilter(path('plat_listing', {'page' : pagination.page, 'field' : 'denomination'} ), 'Dénomination', current_order, current_field) | raw }} </th>
         		<th>Description</th>
-        		<th> {{ headerFilter(path('plat_listing', {'page' : pagination.page, 'field' : 'type'} ), 'Type de plat', current_order, current_field) | raw }} </th>
-        		<th>Catégorie de plat</th>
+        		<th> {{ headerFilter(path('plat_listing', {'page' : pagination.page, 'field' : 'type'} ), 'Type', current_order, current_field) | raw }} </th>
+        		<th>Catégorie</th>
         		<th>Actions</th>
         	</tr>
         	
@@ -55,11 +55,8 @@
             {% endif %}
         </div>
             
-            
         <div class="card-footer">
       		{% include 'elements/pagination.html.twig' %}
-      	</div>
-      	
-      	
+      	</div> 	
 </div>
 {% endblock %}

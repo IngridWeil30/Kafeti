@@ -11,7 +11,8 @@ use App\Form\IngredientType;
 class IngredientController extends AppController
 {
     /**
-     * Index des ingrédients
+     * Listing des ingrédients
+     * 
      * @Route("/ingredient/listing", name="ingredient_listing")
      */
     public function index()

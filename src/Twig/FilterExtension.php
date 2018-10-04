@@ -99,7 +99,7 @@ class FilterExtension extends AbstractExtension
         $id = $field . '-' . rand(1, 9) . rand(1, 9) . rand(1, 9) . rand(1, 9) . rand(1, 9);
 
         $return = '<form action="' . $url . '" method="post">
-                    <div class="input-group mb-0">';
+                    <div class="input-group input-group-sm mb-0">';
 
         if (empty($dropdown_values)) {
             $return .= '<input type="text" class="form-control" placeholder="' . $placeholder . '" id="' . $id . '" name="' . $field . '" value="' . $value . '">';

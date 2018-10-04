@@ -22,13 +22,18 @@ body {
 	font-family: 'Calligraffiti';
 }
 
+div#background img{
+	width: 100%;
+   height: 100%;
+}
+
 h1 {
-	margin: 0px 0px 10px 0px;
 	background-color: #d38470;
 	padding: 15px 5px 15px 15px;
 	color: #FFFFFF;
 	font-family: Calligraffiti;
-	font-size: 35px;
+	font-size: 25px;
+	margin: 0;
 }
 
 b, strong {
@@ -66,4 +71,15 @@ a:hover {
 #text-plat {
     text-align: center;
     color: white;
+}
+
+/********************************************
+*
+* Surcharges Bootstrap
+*
+********************************************/
+
+.breadcrumb {
+	border-radius: 0;
+	margin: 0;
 }
