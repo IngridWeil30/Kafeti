@@ -57,10 +57,6 @@ class PlatController extends AppController
             'route_params' => array()
         );
         
-//         $plats = $this->getDoctrine()
-//         ->getRepository(Plat::class)
-//         ->findAll();
-        
         return $this->render('plat/index.html.twig', [
             'plats' => $result['paginator'],
             'pagination' => $pagination,
@@ -112,8 +108,75 @@ class PlatController extends AppController
             'plat' => $plat,
             'paths' => array(
                 'home' => $this->indexUrlProject(),
+                'urls' => [$this->generateUrl('plat_listing') => "Listing des plats"],
                 'active' => "Fiche d'un plat"
             )
         ));
+    }
+    
+    /**
+     * Edition d'un plat
+     * @Route("/plat/edit/{id}", name="plat_edit")
+     * @ParamConverter("plat", options={"mapping": {"id": "id"}})
+     */
+    public function editAction(Request $request, Plat $plat) {
+        
+        $form = $this->createForm(PlatType::class, $plat);
+        
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            
+            $em = $this->getDoctrine()->getManager();
+            
+            $em->persist($plat);
+            $em->flush();
+        }
+        
+        return $this->render('plat/edit.html.twig', array(
+            'plat' => $plat,
+            'form' => $form->createView(),
+            'paths' => array(
+                'home' => $this->indexUrlProject(),
+                'urls' => [$this->generateUrl('plat_listing') => "Listing des plats"],
+                'active' => "Edition d'un plat"
+            )
+        ));
+    }
+    
+    /**
+     * Désactivation d'un plat
+     *
+     * @Route("/plat/delete/{id}", name="plat_delete")
+     * @ParamConverter("famille", options={"mapping": {"id": "id"}})
+     * @Security("is_granted('ROLE_ADMIN')")
+     *
+     */
+    public function deleteAction(Request $request, Plat $plat)
+    {
+        
+//         if ($famille->getDisabled() == 1) {
+//             $famille->setDisabled(0);
+//         } else {
+//             $famille->setDisabled(1);
+//         }
+        
+//         $entityManager = $this->getDoctrine()->getManager();
+        
+//         $entityManager->persist($famille);
+        
+//         $entityManager->flush();
+        
+//         if ($request->isXmlHttpRequest()) {
+//             return $this->json(array(
+//                 'statut' => true,
+//                 'page' => $page
+//             ));
+//         }
+        
+//         return $this->redirectToRoute('famille_listing', array(
+//             'page' => $page,
+//             'field' => $arrayFilters['field'],
+//             'order' => $arrayFilters['order']
+//         ));
     }
 }

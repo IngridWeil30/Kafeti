@@ -8,7 +8,10 @@
 
 	<h1>Visualisation du plat {% if is_granted ('ROLE_GERANT') %} #{{ plat.id }} {% endif %} "{{ plat.denomination }}"</h1>
 	<div id="block-plat" class="mt-6">
-    	<img class="img-plat justify-content-center" src="{{ plat.image }}" alt='photo {{ plat.denomination }}'><br/>
+	
+	    {{ imagePlat(plat.image, plat.denomination) |raw }}
+	
+    	{#<img class="img-plat justify-content-center" src="{{ plat.image }}" alt='photo {{ plat.denomination }}'><br/>#}
         <div id="text-plat">
             <b>Catégorie de plat :</b> {{ plat.categoriePlat.denomination }}<br/>
             <b>Description du plat :</b> {{ plat.description }}<br/>

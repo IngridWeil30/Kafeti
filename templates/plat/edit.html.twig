@@ -1,20 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Nouveau plat {% endblock %}
+{% block title %} Edition d'un plat {% endblock %}
 
 {% block body %}
 
-<h1>Ajout d'un nouveau plat</h1>
+<h1>Modification du plat #{{ plat.id }} - {{ plat.denomination }}</h1>
 
 <div class="col-6">
     {{ form_start(form) }}
-    
 	{{ form_row(form.denomination) }}
 	{{ form_row(form.description) }}
-	{{ form_row(form.image) }}
+    {{ form_row(form.image) }}
 	{{ form_row(form.type) }}
-	{{ form_row(form.categoriePlat) }}
-	  
+	{{ form_row(form.denomination) }}
     {{ form_rest(form) }}
     {{ form_errors(form) }}
     {{ form_end(form) }}
