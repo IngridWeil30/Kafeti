@@ -148,35 +148,23 @@ class PlatController extends AppController
      *
      * @Route("/plat/delete/{id}", name="plat_delete")
      * @ParamConverter("famille", options={"mapping": {"id": "id"}})
-     * @Security("is_granted('ROLE_ADMIN')")
+     * @Security("is_granted('ROLE_GERANT')")
      *
      */
     public function deleteAction(Request $request, Plat $plat)
     {
+        if ($plat->getActif() == 0) {
+            $plat->setActif(1);
+        } else {
+            $plat->setActif(0);
+        }
         
-//         if ($famille->getDisabled() == 1) {
-//             $famille->setDisabled(0);
-//         } else {
-//             $famille->setDisabled(1);
-//         }
+        $entityManager = $this->getDoctrine()->getManager();
         
-//         $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($plat);
         
-//         $entityManager->persist($famille);
-        
-//         $entityManager->flush();
-        
-//         if ($request->isXmlHttpRequest()) {
-//             return $this->json(array(
-//                 'statut' => true,
-//                 'page' => $page
-//             ));
-//         }
-        
-//         return $this->redirectToRoute('famille_listing', array(
-//             'page' => $page,
-//             'field' => $arrayFilters['field'],
-//             'order' => $arrayFilters['order']
-//         ));
+        $entityManager->flush();
+              
+        return $this->redirectToRoute('plat_listing');
     }
 }
