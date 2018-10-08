@@ -20,7 +20,7 @@ class AppController extends Controller
      *
      * @var integer
      */
-    const MAX_NB_RESULT = 20;
+    const MAX_NB_RESULT = 3;
     
     /**
      * Indentifiant pour la recherche courante

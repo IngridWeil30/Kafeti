@@ -1,33 +1,36 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ingrédients{% endblock %}
+{% block title %} Ingrédients {% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
 <div>
     <h1>Ingrédients</h1>
     
      <div class="card">
     	<div class="card-header">
-    	    <a href="{{ path('ingredient_add') }}"><span class="oi oi-plus"></span> Créer un nouvel ingrédient</a>
+    	 	{{ pagination.nb_elements }} ingrédient{% if pagination.nb_elements > 1 %}s{% endif %} {% if pagination.pages_count > 0 %} - Page {{ pagination.page }} / {{ pagination.pages_count }} {% endif %}
+    	    <a href="{{ path('ingredient_add') }}" class="float-right"><span class="oi oi-plus"></span> Créer un nouvel ingrédient</a>
+    	    {{ labelFilter(path('utils_delete-search', {'page' : pagination.page} ), current_search) | raw }}
       	</div>
       	
       	<div class="card-body">
           	<table class="table table-sm table-striped">
         	<tr>
         	    <th></th>
-        		<th>#</th>
-        		<th>Dénomination</th>
+        		<th> {{ headerFilter(path('ingredient_listing', {'page' : pagination.page, 'field' : 'id'} ), '#', current_order, current_field) | raw }} </th>
+        		<th> {{ headerFilter(path('ingredient_listing', {'page' : pagination.page, 'field' : 'denomination'} ), 'Dénomination', current_order, current_field) | raw }} </th>
         		<th>Type d'ingrédient</th>
         		<th>Prix ingrédient</th>
         		<th>Quantité</th>
         		<th>Seuil d'alerte</th>
         	</tr>
         	
+        	<tr>
+        		<td></td>
+        	    <td>{{ inputFilter(path('ingredient_listing', {'page' : pagination.page, 'field' : current_field, 'order' : current_order}), 'Ingredient-id', current_search, 'Identifiant') | raw }}</td>
+                <td>{{ inputFilter(path('ingredient_listing', {'page' : pagination.page, 'field' : current_field, 'order' : current_order}), 'Ingredient-denomination', current_search, 'Dénomination') | raw }}</td>
+        	</tr>
                 {% for ingredient in ingredients %}
             <tr>
         		<td>{{ ingredient.actif | actif(true) |raw }}</td>
@@ -43,8 +46,16 @@
         		<td>{{ ingredient.seuilAlerte }}</td>
                 {% endfor %}
             </tr>
-      </table>
-</div>
+      		</table>
+          {% if ingredients is empty %}
+          		<p class="text-info text-center">Il  n'y a aucun ingrédient correspondant à votre recherche.</p>
+          {% endif %}
+		</div>
+		         
+        <div class="card-footer">
+      		{% include 'elements/pagination.html.twig' %}
+      	</div> 	
+    </div>
 {% endblock %}
 
 
