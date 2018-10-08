@@ -50,7 +50,7 @@ class PlatRepository extends ServiceEntityRepository
         $query->orderBy($params['repository'] . '.' . $params['field'], $params['order'])->setMaxResults($max);
         $paginator = new Paginator($query);
         
-        // Nombre total de famille
+        // Nombre total de plats
         $query = $this->createQueryBuilder($params['repository'])->select('COUNT(' . $params['repository'] . '.id)');
         
         // Génération des paramètres SQL

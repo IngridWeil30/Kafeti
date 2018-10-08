@@ -14,7 +14,6 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class PlatType extends AbstractType
 {
-
     /**
      * Formulaire concernant l'objet Plat
      *
@@ -38,12 +37,17 @@ class PlatType extends AbstractType
             'query_builder' => function (CategoriePlatRepository $cpr) {
                 return $cpr->createQueryBuilder('cp')
                     ->orderBy('cp.denomination', 'ASC');
+            },
+            'group_by' => function (CategoriePlat $cp) {
+            return $cp->getContinent();
             }
+            ));
+        
             // si on voulait trier le menu déroulant par continent par exemple :
             // 'group_by' => function(CategoriePlat $cp){
             // return $cp->getContinent();
             // }
-        ));
+        
         // ->add('actif')
         // ->add('commandes')
         // ->add('menus')

@@ -11,22 +11,28 @@ class LoadCategoriePlatData extends Fixture
     private $tabCategoriePlat = [
         'CategoriePlat' => [
             'CategoriePlat-1' => [
-                'setDenomination' => 'Français'
+                'setDenomination' => 'Français',
+                'setContinent' => 'Europe'
             ],
             'CategoriePlat-2' => [
-                'setDenomination' => 'Italien'
+                'setDenomination' => 'Italien',
+                'setContinent' => 'Europe'
             ],
             'CategoriePlat-3' => [
-                'setDenomination' => 'Chinois'
+                'setDenomination' => 'Chinois',
+                'setContinent' => 'Asie'
             ],
             'CategoriePlat-4' => [
-                'setDenomination' => 'Mexicain'
+                'setDenomination' => 'Mexicain',
+                'setContinent' => 'Amérique'
             ],
             'CategoriePlat-5' => [
-                'setDenomination' => 'Japonais'
+                'setDenomination' => 'Japonais',
+                'setContinent' => 'Asie'
             ],
             'CategoriePlat-6' => [
-                'setDenomination' => 'Péruvien'
+                'setDenomination' => 'Péruvien',
+                'setContinent' => 'Amérique'
             ]
         ]
     ];

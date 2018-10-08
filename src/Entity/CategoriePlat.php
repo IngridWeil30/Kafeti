@@ -28,6 +28,12 @@ class CategoriePlat
      */
     private $plat;
 
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $continent;
+    
+
     public function __construct()
     {
         $this->plat = new ArrayCollection();
@@ -77,6 +83,18 @@ class CategoriePlat
                 $plat->setCategoriePlat(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getContinent(): ?string
+    {
+        return $this->continent;
+    }
+
+    public function setContinent(string $continent): self
+    {
+        $this->continent = $continent;
 
         return $this;
     }
