@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,8 +11,10 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class PlatController extends AppController
 {
+
     /**
      * Précision de constantes permettant de définir le type du plat
+     *
      * @var array
      */
     const TYPE = array(
@@ -21,10 +22,10 @@ class PlatController extends AppController
         2 => 'Plat',
         3 => 'Dessert'
     );
-    
+
     /**
      * Listing des plats
-     * 
+     *
      * @Route("/plat/listing/{page}/{field}/{order}", name="plat_listing", defaults={"page" = 1, "field"= null, "order"= null}))
      * @Security("is_granted('ROLE_GERANT') or is_granted('ROLE_SERVEUR')")
      */
@@ -33,11 +34,11 @@ class PlatController extends AppController
         if (is_null($field)) {
             $field = 'id';
         }
-        
+
         if (is_null($order)) {
             $order = 'DESC';
         }
-        
+
         $params = array(
             'field' => $field,
             'order' => $order,
@@ -45,18 +46,21 @@ class PlatController extends AppController
             'repositoryClass' => Plat::class,
             'repository' => 'Plat',
             'repositoryMethode' => 'findAllPlats'
-        );       
-        
+        );
+
         $result = $this->genericSearch($request, $session, $params);
-        
+
         $pagination = array(
             'page' => $page,
             'route' => 'plat_listing',
             'pages_count' => ceil($result['nb'] / self::MAX_NB_RESULT),
             'nb_elements' => $result['nb'],
-            'route_params' => array()
+            'route_params' => array(
+                'field' => $field,
+                'order' => $order
+            )
         );
-        
+
         return $this->render('plat/index.html.twig', [
             'plats' => $result['paginator'],
             'pagination' => $pagination,
@@ -69,15 +73,16 @@ class PlatController extends AppController
             )
         ]);
     }
-    
+
     /**
      * Ajout d'un plat
+     *
      * @Route("/plat/add", name="plat_add")
      */
     public function addAction(Request $request)
     {
         $plat = new Plat();
-       
+
         $form = $this->createForm(PlatType::class, $plat);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -96,53 +101,59 @@ class PlatController extends AppController
             )
         ));
     }
-    
+
     /**
      * Fiche d'un plat
+     *
      * @Route("/plat/see/{id}", name="plat_see")
      * @ParamConverter("plat", options={"mapping": {"id": "id"}})
      */
-    public function seeAction(Plat $plat) {
-        
+    public function seeAction(Plat $plat)
+    {
         return $this->render('plat/see.html.twig', array(
             'plat' => $plat,
             'paths' => array(
                 'home' => $this->indexUrlProject(),
-                'urls' => [$this->generateUrl('plat_listing') => "Listing des plats"],
+                'urls' => [
+                    $this->generateUrl('plat_listing') => "Listing des plats"
+                ],
                 'active' => "Fiche d'un plat"
             )
         ));
     }
-    
+
     /**
      * Edition d'un plat
+     *
      * @Route("/plat/edit/{id}", name="plat_edit")
      * @ParamConverter("plat", options={"mapping": {"id": "id"}})
      */
-    public function editAction(Request $request, Plat $plat) {
-        
+    public function editAction(Request $request, Plat $plat)
+    {
         $form = $this->createForm(PlatType::class, $plat);
-        
+
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             $em = $this->getDoctrine()->getManager();
-            
+
             $em->persist($plat);
             $em->flush();
         }
-        
+
         return $this->render('plat/edit.html.twig', array(
             'plat' => $plat,
             'form' => $form->createView(),
             'paths' => array(
                 'home' => $this->indexUrlProject(),
-                'urls' => [$this->generateUrl('plat_listing') => "Listing des plats"],
+                'urls' => [
+                    $this->generateUrl('plat_listing') => "Listing des plats"
+                ],
                 'active' => "Edition d'un plat"
             )
         ));
     }
-    
+
     /**
      * Désactivation d'un plat
      *
@@ -158,13 +169,13 @@ class PlatController extends AppController
         } else {
             $plat->setActif(0);
         }
-        
+
         $entityManager = $this->getDoctrine()->getManager();
-        
+
         $entityManager->persist($plat);
-        
+
         $entityManager->flush();
-              
+
         return $this->redirectToRoute('plat_listing');
     }
 }

@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Controller;
 
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,8 +10,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class IngredientController extends AppController
 {
+
     /**
      * Précision de constantes permettant de définir le type d'un ingrédient
+     *
      * @var array
      */
     const TYPE = array(
@@ -21,12 +22,12 @@ class IngredientController extends AppController
         3 => 'Poissons',
         4 => 'Féculents',
         5 => 'Fruits',
-        6 => 'Condiments',
+        6 => 'Condiments'
     );
-    
+
     /**
      * Listing des ingrédients
-     * 
+     *
      * @Route("/ingredient/listing{page}/{field}/{order}", name="ingredient_listing", defaults={"page" = 1, "field"= null, "order"= null}))
      * @Security("is_granted('ROLE_GERANT') or is_granted('ROLE_SERVEUR')")
      */
@@ -35,11 +36,11 @@ class IngredientController extends AppController
         if (is_null($field)) {
             $field = 'id';
         }
-        
+
         if (is_null($order)) {
             $order = 'DESC';
         }
-        
+
         $params = array(
             'field' => $field,
             'order' => $order,
@@ -47,18 +48,21 @@ class IngredientController extends AppController
             'repositoryClass' => Ingredient::class,
             'repository' => 'Ingredient',
             'repositoryMethode' => 'findAllIngredients'
-        );      
-        
+        );
+
         $result = $this->genericSearch($request, $session, $params);
-        
+
         $pagination = array(
             'page' => $page,
             'route' => 'ingredient_listing',
             'pages_count' => ceil($result['nb'] / self::MAX_NB_RESULT),
             'nb_elements' => $result['nb'],
-            'route_params' => array()
+            'route_params' => array(
+                'field' => $field,
+                'order' => $order
+            )
         );
-        
+
         return $this->render('ingredient/index.html.twig', [
             'ingredients' => $result['paginator'],
             'pagination' => $pagination,
@@ -71,18 +75,19 @@ class IngredientController extends AppController
             )
         ]);
     }
-    
+
     /**
      * Ajout d'un ingrédient
+     *
      * @Route("/ingredient/add", name="ingredient_add")
      */
     public function addAction(Request $request)
     {
         $ingredient = new Ingredient();
-        
+
         $form = $this->createForm(IngredientType::class, $ingredient);
         $form->handleRequest($request);
-        
+
         if ($form->isSubmitted() && $form->isValid()) {
             $ingredient->setActif(1);
             $em = $this->getDoctrine()->getManager();
@@ -90,7 +95,7 @@ class IngredientController extends AppController
             $em->flush();
             return $this->redirect($this->generateUrl('ingredient_listing'));
         }
-        
+
         return $this->render('ingredient/add.html.twig', array(
             'ingredient' => $ingredient,
             'form' => $form->createView(),
