@@ -1,10 +1,13 @@
 <nav class="navbar navbar-expand-xl navbar-dark bg-info" id="bar-nav">
 	<a class="navbar-brand" href="{{ path('index') }}"><img id="logo-kafeti" src="{{ asset('img/logo-panda.png') }}" alt="Logo Kafeti" height='60'></a>
+  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    	<span class="navbar-toggler-icon"></span>
+  		</button>
   	<div class="collapse navbar-collapse" id="navbarSupportedContent">
     	<ul class="navbar-nav mr-auto">
     		{% if is_granted("ROLE_GERANT") %}
-          		    <a class="nav-link" href="{{ path('plat_listing') }}"><span class="oi oi-heart"></span> Espace Plats</a>
-            		<a class="nav-link" href="{{ path('ingredient_listing') }}"><span class="oi oi-heart"></span> Espace Ingrédients</a>
+          		    <a class="nav-link" href="{{ path('plat_listing') }}"><span class="oi oi-book"></span> Espace Plats</a>
+            		<a class="nav-link" href="{{ path('ingredient_listing') }}"><span class="oi oi-cart"></span> Espace Ingrédients</a>
       		{% endif %}
       		
       	</ul>
@@ -19,9 +22,9 @@
      				    {% endfor %}
           			{% endif %}
         		</a>
-        		<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          			<a class="dropdown-item" href=""><span class="oi oi-person"></span> Mon compte</a>
-          			<div class="dropdown-divider"></div>
+        		<div class="dropdown-menu bg-info" aria-labelledby="navbarDropdown">
+          			{#<a class="dropdown-item" href=""><span class="oi oi-person"></span> Mon compte</a>#}
+          			{#<div class="dropdown-divider"></div>#}
           				<a class="dropdown-item" href='{{ path('security_logout') }}'><span class="oi oi-account-logout"></span> Déconnexion</a>
         			</div>
       		</li>

@@ -44,9 +44,9 @@ class ImageExtension extends AbstractExtension
     {
         $html = '';
         if (!is_null($img_plat)) {
-            $html .= '<img class="img-plat justify-content-center mt-3" src="'. $img_plat .'" alt=' . $plat_denomination .'><br/>';
+            $html .= '<img class="redimensionnement-img d-block mt-5 mx-auto" src="'. $img_plat .'" alt=' . $plat_denomination .'><br/>';
         } else {
-            $html .= '<img class="img-plat justify-content-center mt-3" src="/img/image-a-venir.jpg" alt="photo à venir"><br/>';
+            $html .= '<img src="/img/image-a-venir.jpg" alt="photo à venir"><br/>';
         }
         return $html;
     }

@@ -102,6 +102,8 @@ class AppController extends Controller
         
         $paramsSearch = $session->get(self::CURRENT_SEARCH);
         
+        
+        
         if (empty($paramsSearch)) {
             $paramsSearch = $request->request->all();
         } else {
@@ -115,7 +117,7 @@ class AppController extends Controller
             }
         }
         
-        // Vérification si le champ de trie appartient bien à l'object
+        // Vérification si le champ de tri appartient bien à l'objet
         $obj = new $params['repositoryClass']();
         $array_methode = get_class_methods($obj);
         $field = str_replace('_', '', $params['field']);

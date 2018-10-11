@@ -1,8 +1,9 @@
 /********************************************
 *
-* DEFINITION DES FONTS
+* DEFINITION DES POLICES D'ECRITURE
 *
 ********************************************/
+
 @font-face {
 	font-family: 'Calligraffiti';
 	src: url('../font/Calligraffiti.ttf');
@@ -14,30 +15,23 @@
 *
 ********************************************/
 
+/*logo du site*/
 #logo-kafeti {
 	border-radius: 90px;
 }
 
 body {
 	font-family: 'Calligraffiti';
-}
-
-div#background img{
-	width: 100%;
-   height: 100%;
+	background: url("../../img/photo-background.jpg") no-repeat center center fixed;
+    background-size: cover; 
 }
 
 h1 {
 	background-color: #d38470;
 	padding: 15px 5px 15px 15px;
 	color: #FFFFFF;
-	font-family: Calligraffiti;
-	font-size: 25px;
+	font-size: 18px;
 	margin: 0;
-}
-
-b, strong {
-	font-family: 'Calligraffiti';
 }
 
 a {
@@ -50,8 +44,22 @@ a:hover {
 	text-decoration: none;
 }
 
+/*liens de pagination (chiffres uniquement)*/
 a.page-link.number {
     font-size: 19px;
+}
+
+/*design des menus déroulants de la nav*/
+
+.dropdown-item:hover
+{
+	background-color: #17a2b8!important;
+	color: white;
+}
+
+.dropdown-menu.bg-info
+{
+	border-style: none;
 }
 
 /********************************************
@@ -59,30 +67,32 @@ a.page-link.number {
 * Vues de Plat
 *
 ********************************************/
-#ardoise-plat {
-	background: url("../../img/ardoise-2.jpg") repeat center top; 
-	min-height: 600px;
+
+#block-see-plat .img-ardoise {
+	background: url("../../img/ardoise-2.jpg") no-repeat center; 
+	background-size: cover;
+	border-radius: 90px;
+	box-shadow: 10px 5px 5px black;
+	padding: 30px;
+	width: 80%;
 }
 
-.img-plat {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-	width: 20%;
-	border-radius: 20px;
+#block-see-plat .redimensionnement-img {
+	width: 80%;
 }
 
-#text-plat {
-    text-align: center;
+#block-see-plat .text-plat {
     color: white;
+    margin-bottom: 25px;
 }
 
 /********************************************
 *
-* Surcharges Bootstrap
+* Surcharges / Surcharges Bootstrap
 *
 ********************************************/
 
+/*arborescence*/
 .breadcrumb {
 	border-radius: 0;
 	margin: 0;

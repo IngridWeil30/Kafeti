@@ -57,7 +57,7 @@ class LoadPlatData extends Fixture implements DependentFixtureInterface
                 'setActif' => 1,
                 'setCategoriePlat' => 'CategoriePlat-3',
                 'setType' => 1,
-                'setImage' => 'https://cache.marieclaire.fr/data/photo/w1000_ci/1bi/petits-nems-au-boudin-noir.jpg'
+                'setImage' => 'https://cache.marieclaire.fr/data/photo/w600_h315_ci/1bi/petits-nems-au-boudin-noir.jpg'
             ],
         ]
     ];

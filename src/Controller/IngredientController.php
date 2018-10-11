@@ -28,7 +28,7 @@ class IngredientController extends AppController
     /**
      * Listing des ingrédients
      *
-     * @Route("/ingredient/listing{page}/{field}/{order}", name="ingredient_listing", defaults={"page" = 1, "field"= null, "order"= null}))
+     * @Route("/ingredient/listing/{page}/{field}/{order}", name="ingredient_listing", defaults={"page" = 1, "field"= null, "order"= null}))
      * @Security("is_granted('ROLE_GERANT') or is_granted('ROLE_SERVEUR')")
      */
     public function index(Request $request, SessionInterface $session, int $page = 1, $field = null, $order = null)
