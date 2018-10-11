@@ -29,7 +29,8 @@
                 		<td>{{ inputFilter(path('plat_listing', {'page' : pagination.page, 'field' : current_field, 'order' : current_order}), 'Plat-id', current_search, 'Identifiant') | raw }}</td>
                 		<td>{{ inputFilter(path('plat_listing', {'page' : pagination.page, 'field' : current_field, 'order' : current_order}), 'Plat-denomination', current_search, 'Dénomination') | raw }}</td>
                 		<td></td>
-                		<td>{{ inputFilter(path('plat_listing', {'page' : pagination.page, 'field' : current_field, 'order' : current_order}), 'Plat-type', current_search, 'Type') | raw }}</td>
+                		<td>{{ inputFilter(path('plat_listing', {'page' : pagination.page, 'field' : current_field, 'order' : current_order}), 'Plat-type', current_search, '', constant('App\\Controller\\PlatController::TYPE')) | raw }}</td>
+                		<td>{{ inputFilter(path('plat_listing', {'page' : pagination.page, 'field' : current_field, 'order' : current_order}), 'Plat-categoriePlat-id', current_search, 'Catégorie', categories) | raw }}</td>
                 </tr>
                 
                     {% for plat in plats %}

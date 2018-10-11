@@ -8,6 +8,7 @@ use App\Entity\Plat;
 use App\Form\PlatType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use App\Entity\CategoriePlat;
 
 class PlatController extends AppController
 {
@@ -61,9 +62,17 @@ class PlatController extends AppController
             )
         );
 
+        $repository = $this->getDoctrine()->getRepository(CategoriePlat::class);
+        $resultats = $repository->findAll();
+        $categories = array();
+        foreach ($resultats as $resultat){
+            $categories[$resultat->getId()] = $resultat->getDenomination();
+        }
+        
         return $this->render('plat/index.html.twig', [
             'plats' => $result['paginator'],
             'pagination' => $pagination,
+            'categories' => $categories,
             'current_order' => $order,
             'current_field' => $field,
             'current_search' => $session->get(self::CURRENT_SEARCH),
