@@ -9,6 +9,13 @@
 	src: url('../font/Calligraffiti.ttf');
 }
 
+@font-face {
+	font-family: 'bubblerone-regular';
+	src: url('../font/bubblerone-regular.ttf');
+}
+
+
+
 /********************************************
 *
 * GLOBAL
@@ -21,7 +28,7 @@
 }
 
 body {
-	font-family: 'Calligraffiti';
+	font-family: 'bubblerone-regular';
 	background: url("../../img/photo-background.jpg") no-repeat center center fixed;
     background-size: cover; 
 }
@@ -69,6 +76,7 @@ a.page-link.number {
 ********************************************/
 
 #block-see-plat .img-ardoise {
+	font-family: 'Calligraffiti';
 	background: url("../../img/ardoise-2.jpg") no-repeat center; 
 	background-size: cover;
 	border-radius: 90px;
