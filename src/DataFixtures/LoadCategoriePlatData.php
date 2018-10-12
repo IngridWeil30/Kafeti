@@ -12,27 +12,27 @@ class LoadCategoriePlatData extends Fixture
         'CategoriePlat' => [
             'CategoriePlat-1' => [
                 'setDenomination' => 'Français',
-                'setContinent' => 'Europe'
+                'setContinent' => '4'
             ],
             'CategoriePlat-2' => [
                 'setDenomination' => 'Italien',
-                'setContinent' => 'Europe'
+                'setContinent' => '4'
             ],
             'CategoriePlat-3' => [
                 'setDenomination' => 'Chinois',
-                'setContinent' => 'Asie'
+                'setContinent' => '3'
             ],
             'CategoriePlat-4' => [
                 'setDenomination' => 'Mexicain',
-                'setContinent' => 'Amérique'
+                'setContinent' => '1'
             ],
             'CategoriePlat-5' => [
                 'setDenomination' => 'Japonais',
-                'setContinent' => 'Asie'
+                'setContinent' => '3'
             ],
             'CategoriePlat-6' => [
                 'setDenomination' => 'Péruvien',
-                'setContinent' => 'Amérique'
+                'setContinent' => '1'
             ]
         ]
     ];

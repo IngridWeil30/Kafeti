@@ -7,6 +7,7 @@ namespace App\Twig;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use App\Controller\PlatController;
+use App\Controller\CategoriePlatController;
 
 class PlatExtension extends AbstractExtension
 {
@@ -21,6 +22,10 @@ class PlatExtension extends AbstractExtension
             new TwigFilter('type', array(
                 $this,
                 'getType'
+            )),
+            new TwigFilter('continent', array(
+                $this,
+                'getContinent'
             ))
         );
     }
@@ -43,5 +48,12 @@ class PlatExtension extends AbstractExtension
     public function getType($key)
     {
         return (isset(PlatController::TYPE[$key]) ? PlatController::TYPE[$key] : $key);
+    }
+    
+    /**
+     * Récupère le nom du continent correspondant à une valeur
+     */
+    public function getContinent($key) {
+        return (isset(CategoriePlatController::CONTINENTS[$key]) ? CategoriePlatController::CONTINENTS[$key] : $key);
     }
 }

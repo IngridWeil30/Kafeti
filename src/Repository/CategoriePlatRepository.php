@@ -18,6 +18,16 @@ class CategoriePlatRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, CategoriePlat::class);
     }
+    
+    public function findContinentByAsc() {
+        $query = $this->createQueryBuilder('cp')
+        ->addOrderBy('cp.continent', 'ASC')
+        ->addOrderBy('cp.denomination', 'ASC')
+        ->getQuery()
+        ->getResult();
+        
+        return $query;
+    }
 
 //    /**
 //     * @return CategoriePlat[] Returns an array of CategoriePlat objects

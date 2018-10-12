@@ -41,6 +41,10 @@ class FilterExtension extends AbstractExtension
             new TwigFunction('labelFilter', array(
                 $this,
                 'labelFilter'
+            )),
+            new TwigFunction('dropdownFilter', array(
+                $this,
+                'dropdownFilter'
             ))
         );
     }
@@ -83,7 +87,7 @@ class FilterExtension extends AbstractExtension
      * @param array $dropdown_values
      * @return string
      */
-    public function inputFilter($url, $field, $array_values = array(), $placeholder = null, array $dropdown_values = array())
+    public function inputFilter($url, $field, $array_values = array(), $placeholder = null)
     {
         if (is_null($placeholder)) {
             $placeholder = "Recherche...";
@@ -101,8 +105,48 @@ class FilterExtension extends AbstractExtension
         $return = '<form action="' . $url . '" method="post">
                     <div class="input-group input-group-sm mb-0">';
 
-        if (empty($dropdown_values)) {
-            $return .= '<input type="text" class="form-control" placeholder="' . $placeholder . '" id="' . $id . '" name="' . $field . '" value="' . $value . '">';
+        $return .= '<input type="text" class="form-control" placeholder="' . $placeholder . '" id="' . $id . '" name="' . $field . '" value="' . $value . '">';
+        $return .= '<div class="input-group-append">
+                <button class="btn btn-outline-primary" type="submit" id="button-addon2"><span class="oi oi-magnifying-glass"></span></button>
+              </div>
+            </div>
+        </form>';
+
+        return $return;
+    }
+    
+    /**
+     * Génère les minis-formulaires de recherche de type dropdown
+     *
+     * @param string $url
+     * @param string $field
+     * @param array $array_values
+     * @param array $dropdown_values
+     * @return string
+     */
+    public function dropdownFilter($url, $field, $array_values = array(), $dropdown_values = array(), $group_by = false)
+    {
+        $value = "";
+        foreach ($array_values as $key => $val) {
+            if ($key == $field) {
+                $value = $val;
+            }
+        }
+        
+        $return = '<form action="' . $url . '" method="post">
+                    <div class="input-group input-group-sm mb-0">';
+        
+        if ($group_by) {
+            $return .= '<select name="' . $field . '" class="form-control">';
+            $return .= '<option value=""></option>';
+            foreach ($dropdown_values as $groupe => $values) {
+                $return .= '<optgroup label="' . $groupe . '">';
+                foreach ($values as $valeur => $label) {
+                    $return .= '<option value="' . $valeur . '" ' . ($valeur == $value ? 'selected' : '') . '>' . $label . '</option>';
+                }
+                $return .= '</optgroup>';
+            }
+            $return .= '</select>';
         } else {
             $return .= '<select name="' . $field . '" class="form-control">';
             $return .= '<option value=""></option>';
@@ -116,7 +160,7 @@ class FilterExtension extends AbstractExtension
               </div>
             </div>
         </form>';
-
+        
         return $return;
     }
 

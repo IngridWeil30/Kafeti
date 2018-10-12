@@ -63,10 +63,11 @@ class PlatController extends AppController
         );
 
         $repository = $this->getDoctrine()->getRepository(CategoriePlat::class);
-        $resultats = $repository->findAll();
+        $resultats = $repository->findContinentByAsc();
         $categories = array();
         foreach ($resultats as $resultat){
-            $categories[$resultat->getId()] = $resultat->getDenomination();
+            $continent = (isset(CategoriePlatController::CONTINENTS[$resultat->getContinent()]) ? CategoriePlatController::CONTINENTS[$resultat->getContinent()] : $resultat->getContinent());
+            $categories[$continent][$resultat->getId()] = $resultat->getDenomination();
         }
         
         return $this->render('plat/index.html.twig', [
