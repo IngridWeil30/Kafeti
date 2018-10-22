@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Menus {% endblock %}
+
+{% block body %}
+
+    <h1>Menus</h1><br>
+    
+<div id="block-index-menus">
+    <div class="row">
+
+    	{% for menu in menus %}
+		<div class="col-4">
+    		<div class="card card-menus" style="width: 20rem">
+        		<div class="card-header">
+        	   		 {{ menu.actif | actif(true) | raw }} Menu n° {{ menu.id }} - {{ menu.denomination }}
+        		</div>
+      	
+        		<div class="card-body">
+        			<table>             
+            			<tr>
+            				<td>
+            					{% for plat in menu.plat %}
+            		   				 {{ plat.denomination }} <br>
+            					{% endfor %}
+            					<br>
+            				</td>
+                		</tr>
+            		</table>
+        	</div>
+        		<div class="card-footer"></div>
+        	</div>
+        	</div>
+
+		{% endfor %}
+		        	<br>
+	</div>
+</div>
+{% endblock %}
