@@ -63,11 +63,11 @@ class ActionExtension extends AbstractExtension
      */
     public function actionDeleteFilter($disabled, $url_delete, $id = null)
     {
-        $title = "Désactiver la donnée";
-        $icon = "oi-x";
+        $title = "Activer la donnée";
+        $icon = "oi-check";
         if ($disabled == 1) {
-            $title = "Activer la donnée";
-            $icon = "oi-check";
+            $title = "Désactiver la donnée";
+            $icon = "oi-x";
         }
 
         return '<a href="' . $url_delete . '" title="' . $title . '" class="link-delete" ' . ($id ? 'id="delete-' . $id . '"' : '') . '><span class="oi ' . $icon . '"></span></a>';

@@ -168,7 +168,7 @@ class PlatController extends AppController
      * Désactivation d'un plat
      *
      * @Route("/plat/delete/{id}", name="plat_delete")
-     * @ParamConverter("famille", options={"mapping": {"id": "id"}})
+     * @ParamConverter("plat", options={"mapping": {"id": "id"}})
      * @Security("is_granted('ROLE_GERANT')")
      *
      */

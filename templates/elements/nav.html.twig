@@ -6,6 +6,7 @@
   	<div class="collapse navbar-collapse" id="navbarSupportedContent">
     	<ul class="navbar-nav mr-auto">
     		{% if is_granted("ROLE_GERANT") %}
+					<a class="nav-link" href="{{ path('menu_listing') }}"><span class="oi oi-spreadsheet"></span> Espace Menus</a>          		 
           		    <a class="nav-link" href="{{ path('plat_listing') }}"><span class="oi oi-book"></span> Espace Plats</a>
             		<a class="nav-link" href="{{ path('ingredient_listing') }}"><span class="oi oi-cart"></span> Espace Ingrédients</a>
       		{% endif %}
