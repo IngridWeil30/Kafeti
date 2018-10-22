@@ -17,24 +17,22 @@
       	<div class="card-body">
           	<table class="table table-sm table-striped">
         	<tr>
-        	    <th></th>
         		<th> {{ headerFilter(path('ingredient_listing', {'page' : pagination.page, 'field' : 'id'} ), '#', current_order, current_field) | raw }} </th>
         		<th> {{ headerFilter(path('ingredient_listing', {'page' : pagination.page, 'field' : 'denomination'} ), 'Dénomination', current_order, current_field) | raw }} </th>
         		<th>Type d'ingrédient</th>
         		<th>Prix ingrédient</th>
         		<th>Quantité</th>
         		<th>Seuil d'alerte</th>
+        		<th>Actions</th>
         	</tr>
         	
         	<tr>
-        		<td></td>
         	    <td>{{ inputFilter(path('ingredient_listing', {'page' : pagination.page, 'field' : current_field, 'order' : current_order}), 'Ingredient-id', current_search, 'Identifiant') | raw }}</td>
                 <td>{{ inputFilter(path('ingredient_listing', {'page' : pagination.page, 'field' : current_field, 'order' : current_order}), 'Ingredient-denomination', current_search, 'Dénomination') | raw }}</td>
         	</tr>
                 {% for ingredient in ingredients %}
             <tr>
-        		<td>{{ ingredient.actif | actif(true) |raw }}</td>
-        		<td>{{ ingredient.id }}</td>
+        		<td>{{ ingredient.actif | actif(true) |raw }} {{ ingredient.id }}</td>
         		<td>{{ ingredient.denomination }}</td>
         		<td>{{ ingredient.typeIngredient.denomination }}</td>
         		<td>
@@ -44,6 +42,11 @@
             	</td>
         		<td>{{ ingredient.quantite }}</td>
         		<td>{{ ingredient.seuilAlerte }}</td>
+        		<td>
+        			    {{ actionSee(path('ingredient_see', {'id' : ingredient.id })) | raw }}  
+        			    {{ actionEdit(path('ingredient_edit', {'id' : ingredient.id })) | raw }}
+        			    {{ actionDelete(ingredient.actif, path('ingredient_delete', {'id' : ingredient.id })) | raw }}
+        		</td>
                 {% endfor %}
             </tr>
       		</table>

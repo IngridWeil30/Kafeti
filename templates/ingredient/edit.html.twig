@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Edition d'un ingrédient {% endblock %}
+
+{% block body %}
+
+<h1>Modification de l'ingrédient #{{ ingredient.id }} - {{ ingredient.denomination }}</h1>
+
+<div class="col-6">
+    {{ form_start(form) }}
+	{{ form_row(form.denomination) }}
+    {{ form_rest(form) }}
+    {{ form_errors(form) }}
+    {{ form_end(form) }}
+    
+</div>
+	  
+{% endblock %}

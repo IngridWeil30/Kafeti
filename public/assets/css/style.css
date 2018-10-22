@@ -71,11 +71,11 @@ a.page-link.number {
 
 /********************************************
 *
-* Vues de Plat
+* Vues de Plat/Ingrédient
 *
 ********************************************/
 
-#block-see-plat .img-ardoise {
+#block-see-plat .img-ardoise, #block-see-ingredient .img-ardoise {
 	font-family: 'Calligraffiti';
 	background: url("../../img/ardoise-2.jpg") no-repeat center; 
 	background-size: cover;
@@ -85,11 +85,11 @@ a.page-link.number {
 	width: 80%;
 }
 
-#block-see-plat .redimensionnement-img {
+#block-see-plat .redimensionnement-img, #block-see-ingredient .redimensionnement-img {
 	width: 80%;
 }
 
-#block-see-plat .text-plat {
+#block-see-plat .text-plat, #block-see-ingredient .text-ingredient {
     color: white;
     margin-bottom: 25px;
 }

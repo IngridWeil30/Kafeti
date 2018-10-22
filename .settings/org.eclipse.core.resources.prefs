@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//public/assets/css/style.css=UTF-8
 encoding//src/Controller/PlatController.php=UTF-8
 encoding//src/DataFixtures=UTF-8
 encoding//src/DataFixtures/LoadCategoriePlatData.php=UTF-8

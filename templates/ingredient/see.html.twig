@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Fiche ingrédient {% endblock %}
+
+{% block body %}
+
+<div id="block-see-ingredient">
+	<h1>Visualisation de l'ingrédient {% if is_granted ('ROLE_GERANT') %} #{{ ingredient.id }} {% endif %} - {{ ingredient.denomination }}</h1>
+	<div class="img-ardoise mx-auto mt-3">
+		<div class="row align-items-center">
+	        <div class="col-6 img-plat">{{ imagePlat(ingredient.image, ingredient.denomination) |raw }}</div>
+	        
+            <div class="col-6 text-ingredient">
+                <b>Type de l'ingrédient :</b><br/> {{ ingredient.typeIngredient.denomination }}<br/><br/>
+                <b>Quantité de l'ingrédient :</b><br/> {{ ingredient.quantite }}<br/><br/>
+                <b>Seuil d'alerte de l'ingrédient :</b><br/> {{ ingredient.seuilAlerte }}<br/><br/>
+        	</div>
+        </div>
+    </div>	
+</div>
+
+{% endblock %}
