@@ -22,6 +22,7 @@
             		<th>Description</th>
             		<th> {{ headerFilter(path('plat_listing', {'page' : pagination.page, 'field' : 'type'} ), 'Type', current_order, current_field) | raw }} </th>
             		<th>Catégorie</th>
+            		<th>Menu correspondant</th>
             		<th>Actions</th>
             	</tr>
             	
@@ -35,11 +36,16 @@
                 
                     {% for plat in plats %}
                 <tr>
-            		<td>{{ plat.actif | actif(true) | raw }}{{ plat.id }}</td>
+            		<td>{{ plat.actif | actif(true) | raw }} {{ plat.id }}</td>
             		<td>{{ plat.denomination }}</td>
             		<td>{{ plat.description }}</td>
             		<td>{{ plat.type | type }}</td>
             		<td>{{ plat.categoriePlat.denomination }}</td>
+            		<td>                        	
+            		{% for menu in plat.menus %}
+                       	{{ menu.denomination }}
+					{% endfor %}
+					</td>
         		    <td>
         			    {{ actionSee(path('plat_see', {'id' : plat.id })) | raw }}
         			    {{ actionEdit(path('plat_edit', {'id' : plat.id })) | raw }}
