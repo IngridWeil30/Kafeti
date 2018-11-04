@@ -69,6 +69,11 @@ a.page-link.number {
 	border-style: none;
 }
 
+label {
+color: white;
+font-weight: bold;
+}
+
 /********************************************
 *
 * Vues de Plat/Ingrédient

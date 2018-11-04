@@ -1,10 +1,9 @@
 <?php
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CategoriePlatController extends AbstractController
+class CategoriePlatController extends AppController
 {
     const CONTINENTS = array(
         1 => 'Amérique',

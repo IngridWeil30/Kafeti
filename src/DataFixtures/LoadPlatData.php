@@ -45,11 +45,11 @@ class LoadPlatData extends Fixture implements DependentFixtureInterface
                 )
             ],
             'Plat-4' => [
-                'setDenomination' => 'Purée maison à l\'ancienne',
-                'setDescription' => 'Purée maison au beurre et au jus de citron.',
+                'setDenomination' => 'Hachis parmentier maison à l\'ancienne',
+                'setDescription' => 'Viande origine France, purée au beurre et au jus de citron.',
                 'setActif' => 1,
                 'setCategoriePlat' => 'CategoriePlat-1',
-                'setType' => 1,
+                'setType' => 2,
                 'setImage' => 'http://sf2.viepratique.fr/wp-content/uploads/sites/2/2015/04/pur%C3%A9e-maison-2.jpg',
                 'addMenu' => array(
                     'Menu-1'
@@ -76,7 +76,41 @@ class LoadPlatData extends Fixture implements DependentFixtureInterface
                 'addMenu' => array(
                     'Menu-3'
                 )
-            ]
+            ],
+            'Plat-7' => [
+                'setDenomination' => 'Oeufs Mimosa',
+                'setDescription' => 'Coupés en deux, le jaune est remplacé par un mélange avec de la mayonnaise et des herbes.',
+                'setActif' => 1,
+                'setCategoriePlat' => 'CategoriePlat-1',
+                'setType' => 1,
+                'setImage' => 'https://image.afcdn.com/recipe/20130924/17648_w420h344c1cx1328cy1928.jpg',
+                'addMenu' => array(
+                    'Menu-1'
+                )
+            ],
+            'Plat-8' => [
+                'setDenomination' => 'Velouté aux deux champignons',
+                'setDescription' => 'Crème aux morilles et aux cèpes, une touche de crème.',
+                'setActif' => 1,
+                'setCategoriePlat' => 'CategoriePlat-1',
+                'setType' => 1,
+                'setImage' => 'https://image.afcdn.com/recipe/20160404/2282_w420h344c1cx1500cy1000.jpg',
+                'addMenu' => array(
+                    'Menu-1'
+                )
+            ],
+            'Plat-9' => [
+                'setDenomination' => 'Tendres filets de sole meunière',
+                'setDescription' => 'Poisson sauvage, sauce beurre citron.',
+                'setActif' => 1,
+                'setCategoriePlat' => 'CategoriePlat-1',
+                'setType' => 2,
+                'setImage' => 'https://aguabistrotdelamer.files.wordpress.com/2013/03/sol-meuniere.jpg',
+                'addMenu' => array(
+                    'Menu-1'
+                )
+            ],
+            
         ]
     ];
 
