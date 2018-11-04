@@ -4,8 +4,8 @@
 
 {% block body %}
 
-    <h1>Menus</h1><br>
-    
+    <h1>Menus <a href="{{ path('menu_add') }}" class="text-dark float-right"><span class="oi oi-plus"></span> Créer un nouveau menu</a></h1><br>
+         
 <div id="block-index-menus">
     <div class="row">
 
@@ -16,17 +16,27 @@
         	   		 {{ menu.actif | actif(true) | raw }} Menu n° {{ menu.id }} - {{ menu.denomination }}
         		</div>
       	
-        		<div class="card-body">
-        			<table>             
-            			<tr>
-            				<td>
-            					{% for plat in menu.plat %}
-            		   				 {{ plat.denomination }} <br>
+        		<div class="card-body text-center">             
+            			<b><span class="oi oi-signpost"></span> Entrées au choix :</b><br>
+            			        {% for plat in menu.plat %}
+            					{% if plat.type == 1 %}
+            					{{ plat.denomination }}<br>
+            					{% endif %}
             					{% endfor %}
             					<br>
-            				</td>
-                		</tr>
-            		</table>
+            			<b><span class="oi oi-signpost"></span> Plats au choix :</b><br>
+            			        {% for plat in menu.plat %}
+            					{% if plat.type == 2 %}
+            					{{ plat.denomination }}<br>
+            					{% endif %}
+            					{% endfor %}
+            			      	<br>
+            			<b><span class="oi oi-signpost"></span> Desserts au choix :</b><br>
+            			        {% for plat in menu.plat %}
+            					{% if plat.type == 3 %}
+            					{{ plat.denomination }}<br>
+            					{% endif %} 	
+            					{% endfor %}
         	</div>
         		<div class="card-footer"></div>
         	</div>
