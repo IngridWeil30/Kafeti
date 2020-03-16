@@ -13,8 +13,6 @@ use App\Entity\CategoriePlat;
 class PlatController extends AppController
 {
 
-    /** TEST ! */
-
     /**
      * Précision de constantes permettant de définir le type du plat
      *
