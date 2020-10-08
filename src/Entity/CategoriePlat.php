@@ -99,5 +99,3 @@ class CategoriePlat
         return $this;
     }
 }
-
-// test 
